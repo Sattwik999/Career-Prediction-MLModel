@@ -1,0 +1,7 @@
+CAREER PREDICTION MODEL TRAINING SUMMARY
+==================================================
+timestamp: 2025-09-23T22:28:11.178294
+n_classes: 73
+rf_accuracy: 0.97
+n_train: 3199
+n_test: 800

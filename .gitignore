@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+*.ipynb_checkpoints/
+
+
+# Model/data files (if too large for GitHub, e.g. >100MB)
+career_ai/models/*.pkl
+career_ai/models/*.joblib
+career_ai/models/*.h5
+career_ai/models/*.pt
+career_ai/models/*.onnx
+# career_ai/data/*.csv
