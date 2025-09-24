@@ -1,4 +1,3 @@
-
 # Career Prediction Hybrid Model (ML + LLM/Gemini)
 
 >This project is a hybrid system that combines traditional Machine Learning (ML) models with a Large Language Model (LLM, now Gemini) to predict and guide users toward suitable career paths. It leverages both structured data and generative AI for comprehensive, personalized career recommendations.
@@ -179,7 +178,39 @@ POST /predict
 - Edit `src/train.py` to adjust model parameters (RandomForest, XGBoost)
 - Add new features or preprocessing steps in `src/preprocess.py`
 - Update LLM prompts or integration in `src/llm_enricher.py`
+---
 
+## Expose API Publicly with ngrok
+
+You can make your local API accessible over the internet using ngrok. This is useful for sharing your running app for demos or testing.
+
+### 1. Install ngrok
+- Download from https://ngrok.com/download
+- Or install via command line:
+	- On Windows (using Chocolatey):
+		```bash
+		choco install ngrok
+		```
+	- On Linux/Mac:
+		```bash
+		brew install ngrok/ngrok/ngrok
+		# or
+		sudo snap install ngrok
+		```
+
+### 2. Start Your API Locally
+```bash
+uvicorn career_ai.src.api:app --host 0.0.0.0 --port 8000
+# or if using Docker:
+docker run --rm -p 8000:8000 career-hybrid-ai
+```
+
+### 3. Expose with ngrok
+```bash
+ngrok http 8000
+```
+
+ngrok will provide a public URL (like https://xxxx.ngrok.io) that you can share for external access to your API.
 ---
 
 ## Notes
@@ -190,6 +221,35 @@ POST /predict
 
 ## License
 MIT License
+
+---
+
+
+---
+
+## Docker Usage
+
+You can run this project easily using Docker. This is useful for deployment or to avoid local environment issues.
+
+### 1. Build the Docker Image
+```bash
+docker build -t career-hybrid-ai .
+```
+
+### 2. Run the Docker Container
+```bash
+docker run --rm -p 8000:8000 career-hybrid-ai
+```
+
+The API will be available at http://localhost:8000
+
+### 3. Environment Variables
+To use Gemini or OpenAI, pass your API keys as environment variables:
+```bash
+docker run --rm -p 8000:8000 -e GEMINI_API_KEY=your_gemini_api_key career-hybrid-ai
+# or
+docker run --rm -p 8000:8000 -e OPENAI_API_KEY=your_openai_api_key career-hybrid-ai
+```
 
 ---
 
